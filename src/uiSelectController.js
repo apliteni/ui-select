@@ -408,7 +408,7 @@ uis.controller('uiSelectCtrl',
               if (item === undefined) {
                 item = ctrl.tagging.fct !== undefined ? ctrl.tagging.fct(ctrl.search) : ctrl.search;
               }
-              if (!item || angular.equals( ctrl.items[0], item ) ) {
+              if (!item || (angular.equals( ctrl.items[0], item ) && !ctrl.multiple) ) {
                 return;
               }
             } else {
@@ -547,6 +547,7 @@ uis.controller('uiSelectCtrl',
             return false;
           }
           var inputWidth = containerWidth - input.offsetLeft;
+          if (ctrl.multiple) inputWidth -= 10;
           if (inputWidth < 50) inputWidth = containerWidth;
           ctrl.searchInput.css('width', inputWidth+'px');
           return true;
