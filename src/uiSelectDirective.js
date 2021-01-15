@@ -297,7 +297,7 @@ uis.directive('uiSelect',
           // Clone the element into a placeholder element to take its original place in the DOM
           placeholder = angular.element('<div class="ui-select-placeholder"></div>');
           placeholder[0].style.width = offset.width + 'px';
-          placeholder[0].style.height = offset.height + 'px';
+          placeholder[0].style.height = (offset.height - 13) + 'px'; // fix bug with labels
           element.after(placeholder);
 
           // Remember the original value of the element width inline style, so it can be restored
